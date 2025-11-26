@@ -4,13 +4,10 @@ from textual.widgets import (
     Input,
     TextArea,
     Button,
-    Static,
     Header,
-    Footer,
 )
 from textual.containers import Vertical, Horizontal, VerticalScroll
 from textual.reactive import reactive
-from textual.binding import Binding
 import pyperclip
 
 # /* Template System */
@@ -177,7 +174,7 @@ class CiscoTemplateApp(App):
         right_col = self.query_one("#right_col", Vertical)
         output = self.query_one("#output", TextArea)
 
-        if event.value is None:
+        if event.value is Select.BLANK:
             self.selected_template = None
             self.values = {}
             left_col.remove_children()
